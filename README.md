@@ -106,3 +106,10 @@ A CI build job for the `master` branch should run automatically. If it doesn't, 
 `CI / CD` and click `Run Pipeline`.
 
 You can find the link to your Pages preview under `Settings` > `Pages`.
+
+## License selection
+By deafault this template indicates the license as CC-BY-SA, however by editing
+the `slides/outro.html` file one can pick a different license from the "suggested"
+ones.  
+(This however does not forbid anyone from using a different license altogether,
+just that those are the ones that we find suit best `;)` )
