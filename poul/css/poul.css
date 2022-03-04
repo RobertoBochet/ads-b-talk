@@ -440,10 +440,20 @@ body {
 .reveal .outro .cc {
     display: flex;
     align-items: center;
-    height: 7%;
-    max-width: 45%;
+    justify-content: center;
+    height: 6%;
+    width: 40%;
     padding: 0;
-    font-size: 0.25em;
+    font-size: 0.22em;
+}
+
+.reveal .outro .cc img {
+    height: 100%;
+    margin: 0 4% 0 0;
+}
+
+.reveal .outro .cc div {
+    text-align: center;
 }
 
 .reveal .outro .authors {
