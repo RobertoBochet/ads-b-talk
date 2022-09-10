@@ -1,90 +1,110 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8"/>
 
-	<head>
-		<meta charset="utf-8"/>
+    <!-- Meta infos -->
+    <title></title>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
 
-		<!-- Meta infos -->
-		<title></title>
-		<meta name="description" content=""/>
-		<meta name="author" content=""/>
+    <!-- Apple shenanigans -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 
-		<!-- Apple shenanigans -->
-		<meta name="apple-mobile-web-app-capable" content="yes"/>
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <!-- Stylesheets -->
+    <!-- reveal.js base stylesheets. Don't remove nor edit these. -->
+    <link rel="stylesheet" href="./reveal.js/dist/reset.css"/>
+    <link rel="stylesheet" href="./reveal.js/dist/reveal.css"/>
+    <!-- POuL theme -->
+    <link rel="stylesheet" href="./poul/css/poul.css" id="theme"/>
+    <!-- print-button plugin style -->
+    <link href="./reveal.js/plugin_ext/print-button/style.css" rel="stylesheet"/>
+    <!-- Theme for code syntax highlighting -->
+    <link rel="stylesheet" href="./reveal.js/plugin/highlight/monokai.css"/>
+    <!-- Leaflet map style -->
+    <link rel="stylesheet" href="./poul/leaflet/leaflet.css"/>
+  </head>
+  
+  <body>  
+    <script src="./reveal.js/dist/reveal.js"></script>
+    <!-- Plugins -->
+    <script src="./reveal.js/plugin/zoom/zoom.js"></script>
+    <script src="./reveal.js/plugin/notes/notes.js"></script>
+    <script src="./reveal.js/plugin/search/search.js"></script>
+    <script src="./reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="./reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="./reveal.js/plugin/math/math.js"></script>
+    <!-- Non-revealjs plugins -->
+    <script src="./reveal.js/plugin_ext/print-button/print-button.js"></script>
+    <script src="./poul/leaflet/leaflet.js"></script>
 
-		<!-- Stylesheets -->
-		<!-- reveal.js base stylesheets. Don't remove nor edit these. -->
-		<link rel="stylesheet" href="./reveal.js/dist/reset.css"/>
-		<link rel="stylesheet" href="./reveal.js/dist/reveal.css"/>
-		<!-- POuL theme -->
-		<link rel="stylesheet" href="./poul/css/poul.css" id="theme"/>
-		<!-- print-button plugin style -->
-		<link href="./reveal.js/plugin_ext/print-button/style.css" rel="stylesheet"/>
-		<!-- Theme for code syntax highlighting -->
-		<link rel="stylesheet" href="./reveal.js/plugin/highlight/monokai.css"/>
-	</head>
+<!-- ---------- Slides ---------- -->
+    <div class="reveal">
+      <div class="slides">
+        <section data-external-replace="./slides/intro.html"></section>
+        <!-- POuL intro -->
+        <section class="poul-info">
+          <section data-external-replace="./slides/poul-intro/poul-intro.html"></section>
+          <section class="poul-map" data-background-image="./slides/poul-intro/images/sede.jpg" data-background-opacity="0.2">
+            <a class="title-block" href="https://poul.org/about">
+              <img class="logo-text" src="./poul/img/logo-text-white.svg" alt="Politecnico Open unix Labs"/>
+              <div class="vertical-line"></div>
+              <h2>Where are we?</h2>
+            </a>
+            <p>Politecnico di Milano (Leonardo campus), building 9A<br><b>Come visit us!</b></p>
+            <p><small>Make sure to check <a href="https://bits.poul.org/">BITS</a> to know if the headquarters are open!</small></p>
+            <div id="map" style="width:40em; height:30em"/>
+            <script src="./slides/poul-intro/poul-leafletmap.js"></script>
+          </section>
+        </section>
+        <!-- Markdown -->
+        <section data-charset="utf-8"
+           data-markdown="./slides/markdown.md"
+           data-separator="^\r?\n---\r?\n$"
+           data-separator-notes="^Notes:"
+           data-separator-vertical="^\r?\n----\r?\n$">
+        </section>
 
-	<body>
-		<!-- Slides -->
-		<div class="reveal">
-			<div class="slides">
-				<section data-external-replace="./slides/intro.html"></section>
-				<section data-charset="utf-8"
-					 data-markdown="./slides/content.md"
-					 data-separator="^\r?\n---\r?\n$"
-					 data-separator-notes="^Notes:"
-					 data-separator-vertical="^\r?\n----\r?\n$">
-				</section>
-				<section data-external-replace="./slides/outro.html"></section> 
-			</div>
-		</div>
-	
-		<script src="./reveal.js/dist/reveal.js"></script>
-		<!-- Plugins -->
-		<script src="./reveal.js/plugin/zoom/zoom.js"></script>
-		<script src="./reveal.js/plugin/notes/notes.js"></script>
-		<script src="./reveal.js/plugin/search/search.js"></script>
-		<script src="./reveal.js/plugin/markdown/markdown.js"></script>
-		<script src="./reveal.js/plugin/highlight/highlight.js"></script>
-		<script src="./reveal.js/plugin/math/math.js"></script>
-		<script src="./reveal.js/plugin_ext/print-button/print-button.js"></script> // Custom plugin, no need to initialize it in next section
+        <section data-external-replace="./slides/outro.html"></section>
+      </div>
+    </div>
+<!-- ---------------------------- -->
 
-		<!-- reveal.js initialization -->
-		<script>
-//			document.addEventListener("DOMContentLoaded", () => {
-				Reveal.initialize({
-					controls: false,
-					slideNumber: true,
-					navigationMode: 'linear',
-					transition: 'none',
-					pdfMaxPagesPerSlide: 1,
-					pdfSeparateFragments: false,
-					display: 'flex',
-					plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMath.MathJax3 ],
-					markdown: {
-						smartypants: true, // Changes quotes to nicer ones
-					},
-					keyboard: {
-						38: 'prev',  // Up arrow
-						40: 'next'   // Down arrow
-					},
-					mathjax3: {
-						mathjax: './reveal.js/plugin_ext/mathjax-local/tex-mml-chtml.js', // Use local mathjax
-					},
-					<!-- Do not use this for newer plugins, it is needed for compatibility reasons -->
-					dependencies: [{
-						<!-- Allow import of external HTML using data-external attribute -->
-    						src: './reveal.js/plugin_ext/external/external.js', 
-						condition: function() { 
-							return !!document.querySelector( '[data-external],[data-external-replace]' ); 
-     						}
-					}, ],
-				});
-//			});
-		</script>
-
-	</body>
+    <!-- reveal.js initialization -->
+    <script>
+//      document.addEventListener("DOMContentLoaded", () => {
+        Reveal.initialize({
+          controls: false,
+          slideNumber: true,
+          navigationMode: 'linear',
+          transition: 'none',
+          pdfMaxPagesPerSlide: 1,
+          pdfSeparateFragments: false,
+          display: 'flex',
+          plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMath.MathJax3 ],
+          markdown: {
+            smartypants: true, // Changes quotes to nicer ones
+          },
+          keyboard: {
+            38: 'prev',  // Up arrow
+            40: 'next'   // Down arrow
+          },
+          mathjax3: {
+            mathjax: './reveal.js/plugin_ext/mathjax-local/tex-mml-chtml.js', // Use local mathjax
+          },
+          // Do not use this for newer plugins, it is needed for compatibility reasons
+          dependencies: [{
+            // Allow import of external HTML using data-external attribute
+            src: './reveal.js/plugin_ext/external/external.js', 
+            condition: function() { 
+              return !!document.querySelector( '[data-external],[data-external-replace]' ); 
+            }
+          }, ],
+        });
+//      });
+    </script>
+  </body>
 </html>
