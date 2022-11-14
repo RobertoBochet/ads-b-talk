@@ -90,7 +90,13 @@
           },
           keyboard: {
             38: 'prev',  // Up arrow
-            40: 'next'   // Down arrow
+            40: 'next',   // Down arrow
+            86: () => {	// Switch to non-linear navigation mode when "V" is pressed		
+                Reveal.configure({ navigationMode: "default"})
+            },
+            76: () => {	// Switch to linear navigation mode when "L" is pressed		
+                Reveal.configure({ navigationMode: "linear"})
+            }
           },
           mathjax3: {
             mathjax: './reveal.js/plugin_ext/mathjax-local/tex-mml-chtml.js', // Use local mathjax
