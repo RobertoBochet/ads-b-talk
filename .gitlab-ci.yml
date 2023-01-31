@@ -1,7 +1,9 @@
+image: alpine:latest
+
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
-pages:
+pages:master:
   stage: deploy
   script:
     - mkdir .public
@@ -13,3 +15,29 @@ pages:
       - public
   only:
     - master
+  environment:
+    name: master_preview
+    url: $CI_PAGES_URL
+    deployment_tier: staging
+
+pages:review:
+  stage: deploy
+  script:
+    - mkdir -p .public
+    - cp -r * .public
+    - rm .public/deploy.py
+    - mv .public public
+
+    # Generate artifact URL for environment (https://stackoverflow.com/a/72827916)
+    - echo "DEPLOY_URL=${CI_SERVER_PROTOCOL}://${CI_PROJECT_ROOT_NAMESPACE}.${CI_PAGES_DOMAIN}/-/${CI_PROJECT_PATH#${CI_PROJECT_ROOT_NAMESPACE}/}/-/jobs/$CI_JOB_ID/artifacts/public/index.html" > deploy.env
+  artifacts:
+    paths:
+      - public
+    reports:
+      dotenv: deploy.env
+  except:
+    - master
+  environment:
+    name: review/$CI_COMMIT_REF_NAME
+    url: $DEPLOY_URL
+    deployment_tier: testing
