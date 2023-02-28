@@ -3,7 +3,7 @@ image: alpine:latest
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
-pages:master:
+pages:
   stage: deploy
   script:
     - mkdir .public
