@@ -41,3 +41,13 @@ pages:review:
     name: review/$CI_COMMIT_REF_NAME
     url: $DEPLOY_URL
     deployment_tier: testing
+    on_stop: pages:stop_review
+
+pages:stop_review:
+  stage: deploy
+  script:
+    - echo "Remove review app"
+  environment:
+    name: review/$CI_COMMIT_REF_NAME
+    action: stop
+  when: manual
