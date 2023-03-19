@@ -55,4 +55,6 @@ pages:stop_review:
     action: stop
   only:
     - branches
+  except:
+    - master
   when: manual
