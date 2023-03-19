@@ -35,6 +35,8 @@ pages:review:
       - public
     reports:
       dotenv: deploy.env
+  only:
+    - branches
   except:
     - master
   environment:
@@ -42,6 +44,7 @@ pages:review:
     url: $DEPLOY_URL
     deployment_tier: testing
     on_stop: pages:stop_review
+    auto_stop_in: 1 month
 
 pages:stop_review:
   stage: deploy
@@ -50,4 +53,6 @@ pages:stop_review:
   environment:
     name: review/$CI_COMMIT_REF_NAME
     action: stop
+  only:
+    - branches
   when: manual
