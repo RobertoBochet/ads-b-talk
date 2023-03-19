@@ -35,9 +35,24 @@ pages:review:
       - public
     reports:
       dotenv: deploy.env
+  only:
+    - branches
   except:
     - master
   environment:
     name: review/$CI_COMMIT_REF_NAME
     url: $DEPLOY_URL
     deployment_tier: testing
+    on_stop: pages:stop_review
+    auto_stop_in: 1 month
+
+pages:stop_review:
+  stage: deploy
+  script:
+    - echo "Remove review app"
+  environment:
+    name: review/$CI_COMMIT_REF_NAME
+    action: stop
+  only:
+    - branches
+  when: manual
