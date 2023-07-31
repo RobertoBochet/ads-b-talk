@@ -1,10 +1,41 @@
-image: alpine:latest
-
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
+build_pdf:
+  stage: build
+  image:
+    name: registry.poul.org/corsi/utilities/pdf-builder-container:latest
+    entrypoint: ["/bin/sh", "-c"]
+  script: 
+    - python3 ./deploy.py &
+    - >
+      chromium
+      --headless --no-sandbox --disable-web-security --hide-scrollbars
+      --run-all-compositor-stages-before-draw --virtual-time-budget=100000000
+      --disable-dev-shm-usage --disable-gpu --disable-software-rasterizer
+      --print-to-pdf="./raw_slides.pdf" 'http://127.0.0.1:8080/?print-pdf&fix-emoji'
+  allow_failure: true
+  artifacts:
+    paths:
+      - raw_slides.pdf
+
+clean_pdf:
+  stage: build
+  image:
+    name: registry.poul.org/corsi/utilities/pdf-builder-container:latest
+    entrypoint: ["/bin/sh", "-c"]
+  needs: ["build_pdf"]
+  script: 
+    - qpdf raw_slides.pdf --pages . 1-r2 -- slides.pdf
+  allow_failure: true
+  artifacts:
+    paths:
+      - slides.pdf
+
 pages:
   stage: deploy
+  image: alpine:3
+  needs: ["clean_pdf"]
   script:
     - mkdir .public
     - cp -r * .public
@@ -14,7 +45,8 @@ pages:
     paths:
       - public
   only:
-    - master
+    variables:
+      - $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
   environment:
     name: master_preview
     url: $CI_PAGES_URL
@@ -22,12 +54,12 @@ pages:
 
 pages:review:
   stage: deploy
+  image: alpine:3
   script:
     - mkdir -p .public
     - cp -r * .public
     - rm .public/deploy.py
     - mv .public public
-
     # Generate artifact URL for environment (https://stackoverflow.com/a/72827916)
     - echo "DEPLOY_URL=${CI_SERVER_PROTOCOL}://${CI_PROJECT_ROOT_NAMESPACE}.${CI_PAGES_DOMAIN}/-/${CI_PROJECT_PATH#${CI_PROJECT_ROOT_NAMESPACE}/}/-/jobs/$CI_JOB_ID/artifacts/public/index.html" > deploy.env
   artifacts:
@@ -38,7 +70,8 @@ pages:review:
   only:
     - branches
   except:
-    - master
+    variables:
+      - $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
   environment:
     name: review/$CI_COMMIT_REF_NAME
     url: $DEPLOY_URL
@@ -48,6 +81,7 @@ pages:review:
 
 pages:stop_review:
   stage: deploy
+  image: alpine:3
   script:
     - echo "Remove review app"
   environment:
@@ -56,5 +90,6 @@ pages:stop_review:
   only:
     - branches
   except:
-    - master
+    variables:
+      - $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
   when: manual
