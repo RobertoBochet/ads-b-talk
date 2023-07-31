@@ -1,0 +1,16 @@
+/* PrintFramework button custom style */
+.buttonframework-button.printable-version {
+    opacity: 0.33;
+    /* https://iconsvg.xyz/ encoded with https://yoksel.github.io/url-encoder/ 
+     * fill='none' stroke='%23A2A2A2' stroke-width='1.5' stroke-linejoin='round'
+     */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A2A2A2' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5'/%3E%3C/svg%3E");
+}
+
+.buttonframework-button.scrollable-version {
+    opacity: 0.33;
+    /* https://iconsvg.xyz/ encoded with https://yoksel.github.io/url-encoder/ 
+     * fill='%23A2A2A2' stroke='%23000000' stroke-width='1' stroke-linejoin='round'
+     */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23A2A2A2' stroke='%23000000' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z'/%3E%3Cpath d='M14 3v5h5M16 13H8M16 17H8M10 9H8'/%3E%3C/svg%3E");
+}

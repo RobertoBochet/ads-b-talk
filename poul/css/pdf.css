@@ -1,0 +1,67 @@
+
+html.print-pdf .reveal .slides div.pdf-page section {
+  /* Fix top margin for all slides*/
+  top: var(--r-block-margin) !important;
+  /* Item alignment */
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Force render spans inline */
+html.print-pdf .reveal .slides span {
+  display: inline;
+}
+
+/* Workaround for reveal max-dimension hardcoded styles */
+html.print-pdf .reveal .slides section > img,
+html.print-pdf .reveal .slides section > video,
+html.print-pdf .reveal .slides section > iframe {
+  max-width: var(--r-media-max-width) !important; 
+  max-height: var(--r-media-max-height) !important;
+}
+html.print-pdf .reveal .slides section > img {
+  max-width: var(--r-img-max-width) !important; 
+}
+
+/* Speaker notes style */
+html.print-pdf .reveal .slides .speaker-notes-pdf {
+  background: #191919;
+  color: #fff;
+  display: block;
+}
+
+/* Move x-section titles on top of titles to avoid breaking */
+html.print-pdf .reveal x-section-title {
+  position: initial;
+  font-size: 0.8em;
+}
+
+/* Remove fixed elements that break visualization and remove button icons */
+.print-pdf *:is([style*="position:fixed"], [style*="position: fixed"]),
+.print-pdf .buttonframework-buttonbox,
+.print-pdf .pause-overlay {
+  display: none !important;
+}
+
+@media print {
+  @page {
+    size: 29.7cm 21.0cm !important;
+    margin: 0 !important;
+  }
+
+  /* Substitute map with a printed png */
+  .print-pdf #map {
+    background: none !important; 
+  }
+  .print-pdf #map > *:not(#map-fallback){
+    display: none !important; 
+  }
+  .print-pdf #map-fallback {
+    display: block !important;
+    max-width: var(--r-media-max-width);
+    object-fit: fill;
+    margin: 0;
+  }
+}

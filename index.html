@@ -20,8 +20,14 @@
     <link rel="stylesheet" href="./reveal.js/dist/reveal.css"/>
     <!-- POuL theme -->
     <link rel="stylesheet" href="./poul/css/poul.css" id="theme"/>
-    <!-- print-button plugin style -->
-    <link href="./reveal.js/plugin_ext/print-button/style.css" rel="stylesheet"/>
+    <!-- POul PDF theme -->
+    <link rel="stylesheet" href="./poul/css/pdf.css"/>
+    <!-- POul Buttons theme -->
+    <link rel="stylesheet" href="./poul/css/buttons.css"/>
+    <!-- BetterPrint plugin style -->
+    <link href="./reveal.js/plugin_ext/betterprint/style.css" rel="stylesheet"/>
+    <!-- ButtonFramework plugin style -->
+    <link href="./reveal.js/plugin_ext/buttonframework/style.css" rel="stylesheet"/>
     <!-- Theme for code syntax highlighting -->
     <link rel="stylesheet" href="./reveal.js/plugin/highlight/monokai.css"/>
     <!-- Leaflet map style -->
@@ -38,7 +44,8 @@
     <script src="./reveal.js/plugin/highlight/highlight.js"></script>
     <script src="./reveal.js/plugin/math/math.js"></script>
     <!-- Non-revealjs plugins -->
-    <script src="./reveal.js/plugin_ext/print-button/print-button.js"></script>
+    <script src="./reveal.js/plugin_ext/betterprint/plugin.js"></script>
+    <script src="./reveal.js/plugin_ext/buttonframework/plugin.js"></script>
     <script src="./poul/leaflet/leaflet.js"></script>
 
 <!-- ---------- Slides ---------- -->
@@ -48,7 +55,7 @@
         <!-- POuL intro -->
         <section class="poul-info">
           <section data-external-replace="./slides/poul-intro/poul-intro.html"></section>
-          <section class="poul-map" data-background-image="./slides/poul-intro/images/sede.jpg" data-background-opacity="0.2">
+          <section class="poul-intro poul-map" data-background-image="./slides/poul-intro/images/sede.jpg" data-background-opacity="0.2">
             <a class="title-block has-noemoji" href="https://poul.org/about">
               <img class="logo-text" src="./poul/img/logo-text-white.svg" alt="Politecnico Open unix Labs"/>
               <div class="vertical-line"></div>
@@ -56,7 +63,7 @@
             </a>
             <p>Politecnico di Milano (Leonardo campus), building 9A<br><b>Come visit us!</b></p>
             <p><small>Make sure to check <a href="https://bits.poul.org/">BITS</a> to know if the headquarters are open!</small></p>
-            <div class="nolinkemoji" id="map" style="width:40em; height:30em"/>
+            <div class="nolinkemoji" id="map" style="width:40em; height:30em"><img src="/poul/leaflet/images/fallback.png" id="map-fallback" style="display:none;"/></div>
             <script src="./slides/poul-intro/poul-leafletmap.js"></script>
           </section>
         </section>
@@ -75,42 +82,53 @@
 
     <!-- reveal.js initialization -->
     <script>
-//      document.addEventListener("DOMContentLoaded", () => {
-        Reveal.initialize({
-          controls: false,
-          slideNumber: true,
-          navigationMode: 'linear',
-          transition: 'none',
-          pdfMaxPagesPerSlide: 1,
-          pdfSeparateFragments: false,
-          display: 'flex',
-          plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMath.MathJax3 ],
-          markdown: {
-            smartypants: true, // Changes quotes to nicer ones
+      Reveal.initialize({
+        width: 1079,
+        height: 763,
+        controls: false,
+        slideNumber: true,
+        navigationMode: 'linear',
+        transition: 'none',
+        display: 'flex',
+        plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMath.MathJax3, BetterPrint, ButtonFramework],
+        markdown: {
+          smartypants: true, // Changes quotes to nicer ones
+        },
+        keyboard: {
+          38: 'prev',  // Up arrow
+          40: 'next',   // Down arrow
+          86: () => {	// Switch to non-linear navigation mode when "V" is pressed		
+              Reveal.configure({ navigationMode: "default"})
           },
-          keyboard: {
-            38: 'prev',  // Up arrow
-            40: 'next',   // Down arrow
-            86: () => {	// Switch to non-linear navigation mode when "V" is pressed		
-                Reveal.configure({ navigationMode: "default"})
-            },
-            76: () => {	// Switch to linear navigation mode when "L" is pressed		
-                Reveal.configure({ navigationMode: "linear"})
-            }
-          },
-          mathjax3: {
-            mathjax: './reveal.js/plugin_ext/mathjax-local/tex-mml-chtml.js', // Use local mathjax
-          },
-          // Do not use this for newer plugins, it is needed for compatibility reasons
-          dependencies: [{
-            // Allow import of external HTML using data-external attribute
-            src: './reveal.js/plugin_ext/external/external.js', 
-            condition: function() { 
-              return !!document.querySelector( '[data-external],[data-external-replace]' ); 
-            }
-          }, ],
-        });
-//      });
+          76: () => {	// Switch to linear navigation mode when "L" is pressed		
+              Reveal.configure({ navigationMode: "linear"})
+          }
+        },
+        mathjax3: {
+          mathjax: './reveal.js/plugin_ext/mathjax-local/tex-mml-chtml.js', // Use local mathjax
+        },
+        // Do not use this for newer plugins, it is needed for compatibility reasons
+        dependencies: [{
+          // Allow import of external HTML using data-external attribute
+          src: './reveal.js/plugin_ext/external/external.js', 
+          condition: function() { 
+            return !!document.querySelector( '[data-external],[data-external-replace]' ); 
+          }
+        }, ],
+        // For more info: https://gitlab.poul.org/corsi/reveal.js/-/blob/poul/plugin_ext/buttonframework/README.md
+        buttonframework: {
+          buttons: [{
+            class: "scrollable-version",
+            link: "?print-pdf",
+            tooltip: "Scrollable Version"
+          }, {
+            class: "printable-version",
+            link: "slides.pdf",
+            tooltip: "Printable Version"
+          }],
+          buttons_gap: "0.2em",
+        }
+      });
     </script>
   </body>
 </html>
