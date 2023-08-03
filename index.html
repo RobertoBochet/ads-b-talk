@@ -33,8 +33,17 @@
     <!-- Leaflet map style -->
     <link rel="stylesheet" href="./poul/leaflet/leaflet.css"/>
   </head>
-  
-  <body>  
+
+  <body>
+    <!-- Loader (please leave the stylesheet link inside the body to have a guaranteed synchronous load) -->
+    <link rel="stylesheet" type="text/css" href="./poul/css/loader.css" fetchpriority="high" prefetch />
+    <div class="loader-wrapper" id="loader">
+      <div class="loader-content">
+        <img class="spinner" alt="Penguins!" src="./poul/img/logo-notext-white.svg" loading="eager" />
+        <img alt="Loader logo" src="./poul/img/logo-text-white.svg" loading="eager" />
+      </div>
+    </div>
+    <!-- Reveal.js -->
     <script src="./reveal.js/dist/reveal.js"></script>
     <!-- Plugins -->
     <script src="./reveal.js/plugin/zoom/zoom.js"></script>
@@ -110,9 +119,9 @@
         // Do not use this for newer plugins, it is needed for compatibility reasons
         dependencies: [{
           // Allow import of external HTML using data-external attribute
-          src: './reveal.js/plugin_ext/external/external.js', 
-          condition: function() { 
-            return !!document.querySelector( '[data-external],[data-external-replace]' ); 
+          src: './reveal.js/plugin_ext/external/external.js',
+          condition: function() {
+            return !!document.querySelector( '[data-external],[data-external-replace]' );
           }
         }, ],
         // For more info: https://gitlab.poul.org/corsi/reveal.js/-/blob/poul/plugin_ext/buttonframework/README.md
@@ -127,6 +136,25 @@
             tooltip: "Printable Version"
           }],
           buttons_gap: "0.2em",
+        }
+      }).then(function() {
+        // Removes loader block after Reveal.js initialization is completed
+        try {
+          // Prevents loader removal if "debug-loader" is set as "true" in Local Storage
+          if (localStorage.getItem("debug-loader") === "true")
+            return;
+        } catch (e){
+            // ignored
+            // Allows normal flow if localStorage is disabled
+        }
+        var loader = document.getElementById('loader');
+        if (loader) {
+          // Triggers fade-out animation
+          loader.classList.add('loaded');
+          setTimeout(function() {
+            // Removes the element completely
+            loader.parentElement.removeChild(loader);
+          }, 1000); // CSS Animation time
         }
       });
     </script>

@@ -1,0 +1,47 @@
+.loader-wrapper {
+    background-color: #191919;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+
+    display: table;
+    width: 100%;
+    height: 100%;
+
+    transition: 1s opacity linear;
+}
+.loader-wrapper .loader-content {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.loader-wrapper img {
+    padding: 0 15px;
+    height: 14rem;
+    max-height: 27vh;
+    max-width: 65vw;
+}
+.loader-wrapper img.spinner {
+    -webkit-animation:spin 4s ease-in-out infinite;
+    -moz-animation:spin 4s ease-in-out infinite;
+    animation:spin 4s ease-in-out infinite;
+}
+.loader-wrapper.loaded {
+    opacity: 0;
+}
+@-moz-keyframes spin {
+    100% { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform:rotate(360deg);
+    }
+}
