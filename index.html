@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="./poul/css/pdf.css"/>
     <!-- POul Buttons theme -->
     <link rel="stylesheet" href="./poul/css/buttons.css"/>
+    <!-- LinkEmoji plugin style -->
+    <link href="./reveal.js/plugin_ext/linkemoji/style.css" rel="stylesheet"/>
     <!-- BetterPrint plugin style -->
     <link href="./reveal.js/plugin_ext/betterprint/style.css" rel="stylesheet"/>
     <!-- ButtonFramework plugin style -->
@@ -53,6 +55,7 @@
     <script src="./reveal.js/plugin/highlight/highlight.js"></script>
     <script src="./reveal.js/plugin/math/math.js"></script>
     <!-- Non-revealjs plugins -->
+    <script src="./reveal.js/plugin_ext/linkemoji/plugin.js"></script>
     <script src="./reveal.js/plugin_ext/betterprint/plugin.js"></script>
     <script src="./reveal.js/plugin_ext/buttonframework/plugin.js"></script>
     <script src="./poul/leaflet/leaflet.js"></script>
@@ -99,7 +102,7 @@
         navigationMode: 'linear',
         transition: 'none',
         display: 'flex',
-        plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMath.MathJax3, BetterPrint, ButtonFramework],
+        plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMath.MathJax3, LinkEmoji, BetterPrint, ButtonFramework],
         markdown: {
           smartypants: true, // Changes quotes to nicer ones
         },
