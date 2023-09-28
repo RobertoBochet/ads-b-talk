@@ -330,40 +330,6 @@ section.has-light-background h6 {
   color: #fff;
   background: var(--r-link-color-dark);
 }
-
-.reveal .slides a:before,
-.reveal .slides a.linkemoji:before {
-  content: "🔗";
-}
-
-.reveal .slides a.emojisuper:after {
-  content: "🔗";
-  font-size: small;
-  vertical-align: super;
-}
-
-.reveal .slides a.emojisuper:before,
-.reveal .nolinkemoji a:before,
-.reveal .nolinkemoji a:after,
-.reveal .slides a.noemoji:before,
-.reveal .slides a.noemoji:after {
-  content: "";
-}
-
-/* On Firefox set layout.css.has-selector.enabled to True in about:config */
-@supports selector(a:has(img)){
-  .reveal .slides a:has(img):before {
-    content: "";
-  }
-}
-
-/* Temporary workaround for browsers not supporting has selector*/
-/* https://connect.mozilla.org/t5/discussions/when-is-has-css-selector-going-to-be-fully-implemented-in/td-p/23794 */
-@supports not selector(a:has(img)){
-  .reveal .slides a.has-noemoji:before {
-    content: "";
-  }
-}
   
 /*********************************************
  * Frame helper
