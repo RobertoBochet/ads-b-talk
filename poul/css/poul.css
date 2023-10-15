@@ -3,7 +3,7 @@
  *
  * Forked from the default black theme.
  */
-@import url(../../reveal.js/dist/theme/fonts/source-sans-pro/source-sans-pro.css); */
+@import url(../../reveal.js/dist/theme/fonts/source-sans-pro/source-sans-pro.css);
 
 section.has-light-background,
 section.has-light-background h1,
@@ -223,7 +223,7 @@ section.has-light-background h6 {
   padding: 5px;
   font-style: italic;
   background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
 
 .reveal blockquote p:first-child,
@@ -309,6 +309,16 @@ section.has-light-background h6 {
   margin: var(--r-block-margin) 0;
 }
 
+.reveal .text-small{
+    font-size: 0.75em
+}
+
+.reveal .license {
+    margin: 20px 0 10px;
+    color: #aaa;
+    font-size: 0.5em
+}
+
 /*********************************************
  * LINKS
  *********************************************/
@@ -330,7 +340,7 @@ section.has-light-background h6 {
   color: #fff;
   background: var(--r-link-color-dark);
 }
-  
+
 /*********************************************
  * Frame helper
  *********************************************/
@@ -402,143 +412,198 @@ section.has-light-background h6 {
 }
 
 /*********************************************
- * INTRO & OUTRO
+ * INTRO
  *********************************************/
-
-.reveal .course-block {
-  width: 80%
+.intro {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center !important;
+  align-items: stretch;
+  gap: 50px;
 }
 
-.reveal .text-mix {
+.intro__talk-info {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.intro__course-title {
+  margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.3em;
   width: fit-content;
+  white-space: nowrap;
 }
 
-.reveal .text-mix img {
+.intro__talk-info hr {
+  width: 80%;
   margin: 0;
+  border: 0;
+  border-top: 0.07em solid rgb(128, 128, 128);
 }
 
-.reveal .intro h3 {
-  margin: 0;
-  font-weight: normal;
+.intro__talk-title {
+  padding: 0 30px;
+  display: block;
+  font-size: 2.5em !important;
+  margin: 0 !important;
+}
+.intro__talk-subtitle {
+  padding: 0 30px;
+  display: block;
+  font-size: 1.2em !important;
+  margin: 0 !important;
+  font-weight: normal !important;
 }
 
-.reveal .course-block {
-  margin-bottom: 0.5em;
-}
-
-
-.reveal .intro h1 {
-  text-shadow: 0.05em 0.05em 0.1em black;
-  padding: 0;
-  margin: 0;
-}
-
-.reveal i {
-  font-style: italic;
-}
-
-.reveal .intro hr,
-.reveal .outro hr {
-  width: 70%;
-  border: 0px;
-  border-top: 0.07em solid gray;
-}
-
-.reveal .logo-block {
+.intro__logo {
   display: flex;
+  flex-flow: row nowrap;
   justify-content: center;
-  margin-top: 1em;
+  gap: 10px;
+}
+.intro__logo__image, .intro__logo__text {
+  display: block;
+  margin: 0 !important;
+  height: 150px;
+  max-height: none !important;
+  max-width: none !important;
+}
+.intro__logo__text {
+  padding: 20px 0;
+  box-sizing: border-box;
 }
 
-.reveal .logo-block > * {
-  margin: 0;
-  align-self: center
+.intro__speakers {
+  align-self: stretch;
+  margin: 0 !important;
+  padding: 0 100px;
+  list-style: none !important;
+  display: flex !important;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  gap: 20px;
 }
-
-.reveal .logo {
-  max-width: 4em;
-  margin-right: 0.5em;
-}
-
-.reveal .logo-text {
-  max-width: 10em;
-}
-
-.reveal .authors-block {
-  list-style: none;
+.intro__speakers li {
+  white-space: nowrap;
+  padding: 0;
+  flex-grow: 1;
+  text-align: center;
   font-size: 0.6em;
-  margin-top: 3%;
-  margin-left: 0;
-  padding-left: 0;
+}
+.intro__speakers li a {
+  font-style: italic;
+  color: var(--r-main-color);
+  font-size: 0.9em;
+  display: block;
+}
+
+/*********************************************
+ * OUTRO
+ *********************************************/
+.outro {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between !important;
+  align-items: stretch;
+}
+
+.outro h1 {
+  font-size: 2em;
+}
+
+.outro__container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-grow: 1;
+  margin: 40px 0;
+}
+
+.outro__left-column, .outro__right-column {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 50%;
+  height: 100%;
+}
+
+.outro__left-column {
+  justify-content: space-between;
+}
+
+.outro__right-column {
+  justify-content: center;
+  gap: 20px
+}
+
+.outro__course-title h1 {
+  font-size: 1.2em;
+}
+.outro__course-title h2 {
+  font-size: 1em;
+}
+
+.outro__logo {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.outro__logo__text {
+  width: 70%;
+  margin: 0 !important;
+}
+.outro__logo__image {
+  width: 30%;
+  margin: 0 !important;
+}
+
+.outro__authors-section {
+  display: flex;
+  width: 100%;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.outro__authors-section h4 {
+  font-size: 0.8em;
+  padding: 0;
+  margin: 0 0 3px;
+}
+
+.outro__authors-section ul {
+  margin:0;
+  padding: 0;
+  list-style: none;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   width: 80%;
 }
-.reveal .authors-block li {
-  flex-basis: 33%;
+.outro__authors-section ul li {
+  white-space: nowrap;
+  margin: 0 3px;
+  padding: 0;
   flex-grow: 1;
   text-align: center;
-  margin-top: 1em;
+  font-size: 0.6em;
 }
-
-.reveal .authors-block a {
+.outro__authors-section ul li a {
   font-style: italic;
   color: var(--r-main-color);
+  font-size: 0.9em;
+  display: block;
 }
 
-.reveal .poul-info .title-block {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.reveal .poul-info .title-block > * {
-  flex-shrink: 0;
-}
-
-.reveal .poul-info .logo-text {
-  width: 10em;
-}
-
-.reveal .poul-info .vertical-line {
-  height: 4em;
-  border: 0px;
-  border-left: 0.12em solid white;
-  margin-left: 1em;
-  margin-right: 1em;
-}
-
-
-.reveal .outro h1 {
-  padding: 0;
-  margin: 0;
-  font-size: 2em;
-  width: max-content;
-}
-
-.reveal .outro .license {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 4em;
-  padding: 0;
-  font-size: 0.44em;
-  margin-top: 1em;
-}
-
-.reveal .outro .license img {
-  height: 4em;
-  margin: 0 4% 0 0;
-}
-
-.reveal .outro .license div {
-  text-align: center;
-  flex-shrink: 0;
+.outro__license {
+  font-size: 0.25em;
 }
 
 /*********************************************
@@ -556,7 +621,7 @@ section.has-light-background h6 {
   line-height: 1.2em;
   word-wrap: break-word;
 /*  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3); */
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 .reveal code {
