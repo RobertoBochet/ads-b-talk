@@ -65,3 +65,8 @@ html.print-pdf .reveal x-section-title {
     margin: 0;
   }
 }
+
+.print-pdf .outro::after {
+  content: "";
+  height: 0;
+}
