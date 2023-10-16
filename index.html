@@ -7,6 +7,7 @@
     <title></title>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
+    <meta name="keywords" content="course, talk, slides, POuL, Politecnico Open unix Labs">
 
     <!-- Apple shenanigans -->
     <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -67,10 +68,10 @@
         <!-- POuL intro -->
         <section class="poul-info">
           <section data-external-replace="./slides/poul-intro/poul-intro.html"></section>
-          <section class="poul-intro poul-map" data-background-image="./slides/poul-intro/images/sede.jpg" data-background-opacity="0.2">
-            <a class="title-block has-noemoji" href="https://poul.org/about">
-              <img class="logo-text" src="./poul/img/logo-text-white.svg" alt="Politecnico Open unix Labs"/>
-              <div class="vertical-line"></div>
+          <section class="poul-intro poul-map" data-auto-animate data-background-image="./slides/poul-intro/images/sede.jpg" data-background-opacity="0.2">
+            <a class="poul-intro__title-block has-noemoji" href="https://poul.org/courses">
+              <img class="intro__logo__text" data-id="intro-logo-text" src="./poul/img/logo-text-white.svg" alt="Politecnico Open unix Labs"/>
+              <div class="poul-intro__vertical-line"></div>
               <h2>Where are we?</h2>
             </a>
             <p>Politecnico di Milano (Leonardo campus), building 9A<br><b>Come visit us!</b></p>
@@ -110,10 +111,10 @@
         keyboard: {
           38: 'prev',  // Up arrow
           40: 'next',   // Down arrow
-          86: () => {	// Switch to non-linear navigation mode when "V" is pressed		
+          86: () => {	// Switch to non-linear navigation mode when "V" is pressed
               Reveal.configure({ navigationMode: "default"})
           },
-          76: () => {	// Switch to linear navigation mode when "L" is pressed		
+          76: () => {	// Switch to linear navigation mode when "L" is pressed
               Reveal.configure({ navigationMode: "linear"})
           }
         },

@@ -511,10 +511,12 @@ section.has-light-background h6 {
   flex-flow: column nowrap;
   justify-content: space-between !important;
   align-items: stretch;
+  gap: 40px;
 }
 
 .outro h1 {
   font-size: 2em;
+  margin: 0 !important;
 }
 
 .outro__container {
@@ -524,7 +526,6 @@ section.has-light-background h6 {
   align-items: center;
   width: 100%;
   flex-grow: 1;
-  margin: 40px 0;
 }
 
 .outro__left-column, .outro__right-column {
@@ -605,6 +606,28 @@ section.has-light-background h6 {
 .outro__license {
   font-size: 0.25em;
 }
+
+/*********************************************
+ * INTRO POuL
+ *********************************************/
+.poul-intro__title-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.poul-intro__title-block > * {
+  flex-shrink: 0;
+}
+
+.poul-intro__vertical-line {
+  height: 4em;
+  border: 0;
+  border-left: 0.12em solid white;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
 
 /*********************************************
  * CODE
