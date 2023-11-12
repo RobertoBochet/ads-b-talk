@@ -1,0 +1,4 @@
+[submodule "reveal.js"]
+	path = reveal.js
+	url = https://gitlab.poul.org/corsi/reveal.js
+	branch = poul

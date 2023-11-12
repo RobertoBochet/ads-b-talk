@@ -1,0 +1,39 @@
+<section>
+    <h1>Commercial SDR</h1>
+</section>
+
+<section>
+    <h2><a href="https://www.realtek.com/en/products/communications-network-ics/item/rtl2832u" target="_blank">RTL2832U</a></h2>
+
+    <blockquote cite="https://www.rtl-sdr.com/about-rtl-sdr/" style="font-size: 0.9em">
+        <p>
+            The origins of RTL-SDR stem from mass produced DVB-T TV tuner dongles that were based on the RTL2832U chipset. With the combined efforts of Antti Palosaari, Eric Fry and Osmocom (in particular Steve Markgraf) it was found that the raw I/Q data on the RTL2832U chipset could be accessed directly, which allowed the DVB-T TV tuner to be converted into a wideband software defined radio via a custom software driver developed by Steve Markgraf.
+        </p>
+        <cite style="font-size: 0.8em;">&mdash; from <a href="https://www.rtl-sdr.com/about-rtl-sdr/" target="_blank">RTL-SDR.COM</a></cite>
+    </blockquote>
+</section>
+
+<section>
+    <h2>SDR dongle</h2>
+    <div style="width:80%; display: flex; justify-content: center;">
+        <img style="width: 45%;" src="./images/rtl-sdr.png" />
+        <img style="width: 45%;" src="./images/dvb-t-sdr.png" />
+    </div>
+</section>
+
+<section data-auto-animate>
+    <h3>Driver</h3>
+
+    <p>In the <b>Linux kernel</b> there are the drivers<br/>to work with <a href="https://wiki.archlinux.org/title/DVB-T">DVB-T devices</a> like <b>RTL2832U</b><br/>called <code>dvb_usb_rtl28xxu</code> and <code>rtl2832</code></p>
+    <p class="fragment">But they do not allow us to access to the <b>RTL2832U</b> raw output,<br/>so we have to blacklist kernel drivers<br/>and install the <a href="https://osmocom.org/projects/rtl-sdr/wiki/Rtl-sdr"><code>rtl-sdr</code></a> one</p>
+</section>
+
+<section data-auto-animate>
+    <h3>Driver</h3>
+
+    <p>If you are <small>(unfortunately)</small> using <b>Windows</b><br/>you have to fix microsoft mistakes</p>
+    <p class="fragment">Because of reasons Windows installs<br/>a useless driver for the <b>RTL2832U</b></p>
+    <p class="fragment">With <a href="https://zadig.akeo.ie/" target="_blank">Zadig</a> you can fix it</p>
+    <p class="fragment warning" style="max-width: 80%">Follow carefully this <a href="https://www.rtl-sdr.com/getting-the-rtl-sdr-to-work-on-windows-10/" target="_blank">documentation</a><br/>
+        You could cause serious damage with Zadig</p>
+</section>

@@ -1,0 +1,50 @@
+<section>
+    <h1>ADS-B</h1>
+    <h2 class="fragment">The aircraft language</h2>
+</section>
+
+<section data-auto-animate>
+    <h3>What is <a href="https://en.wikipedia.org/wiki/Automatic_Dependent_Surveillance%E2%80%93Broadcast" target="_blank">ADS-B</a></h3>
+    <p>A<small>utomatic</small>D<small>ependent</small>S<small>urveillance</small>-B<small>roadcast</small><br/>
+    is a surveillance system for aircraft traffic</p>
+    <p class="fragment">Periodically, aircraft send their own report on the air</p>
+</section>
+
+<section data-auto-animate>
+    <h3>What is <a href="https://en.wikipedia.org/wiki/Automatic_Dependent_Surveillance%E2%80%93Broadcast" target="_blank">ADS-B</a></h3>
+    <p>The report contains</p>
+    <ul>
+        <li class="fragment">Aircraft UID</li>
+        <li class="fragment">Speed</li>
+        <li class="fragment">Altitude</li>
+        <li class="fragment">GPS position</li>
+        <li class="fragment">Some other information</li>
+    </ul>
+    <p class="fragment">All this information is sent <small>(also)</small> on <b>1090MHz</b></p>
+</section>
+
+<section data-auto-animate>
+    <h2>Dump1090</h2>
+    <p>Dump 1090 is an <b>ADS-B</b> (open source) decoder</p>
+    <p class="fragment">You can find the <b>source code</b> <a href="https://github.com/antirez/dump1090" target="_blank">here</a></p>
+</section>
+
+<section data-auto-animate>
+    <h2>Dump1090</h2>
+    <p>Unfortunately <b>official binaries</b> are not available</p>
+    <p class="fragment">And the building script is rather old</p>
+</section>
+
+<section data-auto-animate>
+    <h2>Dump1090</h2>
+    <p>So, the fastest way to run Dump1090 is by exploiting <a href="https://www.docker.com/" target="_blank">docker</a></p>
+    <pre class="fragment"><code lang="bash" data-trim>
+        docker run --rm --device /dev/bus/usb -p 8080:8080 jraviles/dump1090
+    </code></pre>
+    <p class="fragment">The service GUI is now reachable at <a href="http://127.0.0.1:8080" target="_blank">http://127.0.0.1:8080</a></p>
+</section>
+
+<section data-auto-animate>
+    <h2>Dump1090</h2>
+    <img src="./images/dump1090-screenshot.png" alt="dump1090 screenshot" />
+</section>
