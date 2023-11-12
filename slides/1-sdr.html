@@ -1,0 +1,535 @@
+<section>
+    <h1>SDR</h1>
+</section>
+<style>
+  .diagram {
+    --color: #444;
+  }
+
+  .diagram path, .diagram polygon {
+    fill: none;
+  }
+
+  .diagram .edge polygon, .diagram text {
+    fill: var(--color);
+  }
+
+  .diagram path, .diagram polygon {
+    stroke: var(--color);
+  }
+
+  .diagram__node--selected polygon {
+    stroke: var(--r-heading-color) !important;
+  }
+
+  .diagram__node--selected text {
+    fill: #fff !important;
+  }
+</style>
+<!--
+// Graph source code
+digraph {
+    layout=fdp
+    splines=ortho
+    rankdir = LR
+    bgcolor=transparent
+    //bgcolor="#191919"
+
+    node[shape=rectangle colorscheme=set27 color=1 fontcolor="#ffffff" bgcolor=transparent fontname="helvetica"]
+    edge[colorscheme=set27 color=1 fontcolor="#ffffff" fontname="helvetica"]
+
+    ant_head [shape=invtriangle label="" pos="-1,1!"]
+    ant[shape=point width=0 label="" pos="-1,0!"]
+    ant_head -> ant [arrowhead=none]
+    tuner [label="RF\ntuner" pos="0,0!" headport="w"]
+    adc [label="A/D\nConverter" pos="1.4,0!"]
+    ddc [label="DDC" pos="2.7,0!"]
+    pc [label="pc" shape="plaintext" pos="3.6,0!" width=0.5]
+
+    ant -> tuner [tailport="c" headport="c"]
+    tuner -> adc
+    adc -> ddc
+    ddc -> pc
+}
+-->
+<section data-auto-animate>
+    <svg style="width: 100%" viewBox="0.00 0.00 384.00 119.00" xmlns="http://www.w3.org/2000/svg" data-id="diagram">
+        <g class="diagram" transform="translate(4 115)">
+            <g id="node1" class="node">
+                <title>ant_head</title>
+                <polygon fill="none" points="27,-75 54,-102 0,-102 27,-75"/>
+            </g>
+            <g id="node2" class="node">
+                <ellipse cx="27" cy="-21" rx="0" ry="0"/>
+            </g>
+            <g id="edge1" class="edge">
+                <path fill="none" d="M27,-74.8314C27,-54.1685 27,-23.0205 27,-21.0939"/>
+            </g>
+            <g id="node3" class="node diagram__node--selected">
+                <polygon points="126,-41.6019 72,-41.6019 72,-.3981 126,-.3981 126,-41.6019"/>
+                <text text-anchor="middle" stroke="none" x="99" y="-25.2" 
+                      font-size="14.00">RF
+                </text>
+                <text text-anchor="middle" stroke="none" x="99" y="-8.4" 
+                      font-size="14.00">tuner
+                </text>
+            </g>
+            <g id="edge2" class="edge">
+                <path d="M27.0522,-20C27.0522,-20 61.658,-20 61.658,-20"/>
+                <polygon points="61.658,-23.5001 71.658,-20 61.6579,-16.5001 61.658,-23.5001"/>
+            </g>
+            <g id="node4" class="node">
+                <polygon
+                        points="238.7501,-41.6019 160.8499,-41.6019 160.8499,-.3981 238.7501,-.3981 238.7501,-41.6019"/>
+                <text text-anchor="middle" stroke="none" x="199.8" y="-25.2" 
+                      font-size="14.00">A/D
+                </text>
+                <text text-anchor="middle" stroke="none" x="199.8" y="-8.4" 
+                      font-size="14.00">Converter
+                </text>
+            </g>
+            <g id="edge3" class="edge">
+                <path d="M126.0126,-20C126.0126,-20 150.9633,-20 150.9633,-20"/>
+                <polygon fill="#66c2a5" points="150.9633,-23.5001 160.9633,-20 150.9632,-16.5001 150.9633,-23.5001"/>
+            </g>
+            <g id="node5" class="node">
+                <polygon fill="none" points="320.4,-39 266.4,-39 266.4,-3 320.4,-3 320.4,-39"/>
+                <text text-anchor="middle" stroke="none" x="293.4" y="-16.8" 
+                      font-size="14.00">DDC
+                </text>
+            </g>
+            <g id="edge4" class="edge">
+                <path d="M238.6817,-20C238.6817,-20 256.1816,-20 256.1816,-20"/>
+                <polygon points="256.1816,-23.5001 266.1816,-20 256.1816,-16.5001 256.1816,-23.5001"/>
+            </g>
+            <g id="node6" class="node">
+                <text text-anchor="middle" stroke="none" x="358.2" y="-16.8" 
+                      font-size="14.00">PC
+                </text>
+            </g>
+            <g id="edge5" class="edge">
+                <path fill="none" d="M320.5056,-20C320.5056,-20 329.8529,-20 329.8529,-20"/>
+                <polygon points="329.853,-23.5001 339.8529,-20 329.8529,-16.5001 329.853,-23.5001"/>
+            </g>
+        </g>
+    </svg>
+    <h3 data-id="component-name">RF tuner</h3>
+    <div class="r-stretch">
+        <p>
+            The electrical signal coming from the <b>antenna</b><br/>passes through an <a href="https://en.wikipedia.org/wiki/Band-pass_filter">adjustable band-pass filter</a><br/>in order to remove the unwanted frequencies...
+        </p>
+    </div>
+</section>
+<section data-auto-animate>
+    <svg style="width: 100%" viewBox="0.00 0.00 384.00 119.00" xmlns="http://www.w3.org/2000/svg" data-id="diagram">
+        <g class="diagram" transform="translate(4 115)">
+            <g id="node1" class="node">
+                <title>ant_head</title>
+                <polygon fill="none" points="27,-75 54,-102 0,-102 27,-75"/>
+            </g>
+            <g id="node2" class="node">
+                <ellipse cx="27" cy="-21" rx="0" ry="0"/>
+            </g>
+            <g id="edge1" class="edge">
+                <path fill="none" d="M27,-74.8314C27,-54.1685 27,-23.0205 27,-21.0939"/>
+            </g>
+            <g id="node3" class="node diagram__node--selected">
+                <polygon points="126,-41.6019 72,-41.6019 72,-.3981 126,-.3981 126,-41.6019"/>
+                <text text-anchor="middle" stroke="none" x="99" y="-25.2"
+                      font-size="14.00">RF
+                </text>
+                <text text-anchor="middle" stroke="none" x="99" y="-8.4"
+                      font-size="14.00">tuner
+                </text>
+            </g>
+            <g id="edge2" class="edge">
+                <path d="M27.0522,-20C27.0522,-20 61.658,-20 61.658,-20"/>
+                <polygon points="61.658,-23.5001 71.658,-20 61.6579,-16.5001 61.658,-23.5001"/>
+            </g>
+            <g id="node4" class="node">
+                <polygon
+                        points="238.7501,-41.6019 160.8499,-41.6019 160.8499,-.3981 238.7501,-.3981 238.7501,-41.6019"/>
+                <text text-anchor="middle" stroke="none" x="199.8" y="-25.2"
+                      font-size="14.00">A/D
+                </text>
+                <text text-anchor="middle" stroke="none" x="199.8" y="-8.4"
+                      font-size="14.00">Converter
+                </text>
+            </g>
+            <g id="edge3" class="edge">
+                <path d="M126.0126,-20C126.0126,-20 150.9633,-20 150.9633,-20"/>
+                <polygon fill="#66c2a5" points="150.9633,-23.5001 160.9633,-20 150.9632,-16.5001 150.9633,-23.5001"/>
+            </g>
+            <g id="node5" class="node">
+                <polygon fill="none" points="320.4,-39 266.4,-39 266.4,-3 320.4,-3 320.4,-39"/>
+                <text text-anchor="middle" stroke="none" x="293.4" y="-16.8"
+                      font-size="14.00">DDC
+                </text>
+            </g>
+            <g id="edge4" class="edge">
+                <path d="M238.6817,-20C238.6817,-20 256.1816,-20 256.1816,-20"/>
+                <polygon points="256.1816,-23.5001 266.1816,-20 256.1816,-16.5001 256.1816,-23.5001"/>
+            </g>
+            <g id="node6" class="node">
+                <text text-anchor="middle" stroke="none" x="358.2" y="-16.8"
+                      font-size="14.00">PC
+                </text>
+            </g>
+            <g id="edge5" class="edge">
+                <path fill="none" d="M320.5056,-20C320.5056,-20 329.8529,-20 329.8529,-20"/>
+                <polygon points="329.853,-23.5001 339.8529,-20 329.8529,-16.5001 329.853,-23.5001"/>
+            </g>
+        </g>
+    </svg>
+    <h3 data-id="component-name">RF tuner</h3>
+    <div class="r-stretch">
+        <p>
+            ...then the filtered signal is <b>mixed</b> with another signal<br/>coming from an <b>internal oscillator</b> to produce<br/>an <b>Intermediate Frequency signal</b>
+        </p>
+    </div>
+</section>
+
+<section data-auto-animate>
+    <svg style="width: 100%" viewBox="0.00 0.00 384.00 119.00" xmlns="http://www.w3.org/2000/svg" data-id="diagram">
+        <g class="diagram" transform="translate(4 115)">
+            <g id="node1" class="node">
+                <title>ant_head</title>
+                <polygon fill="none" points="27,-75 54,-102 0,-102 27,-75"/>
+            </g>
+            <g id="node2" class="node">
+                <ellipse cx="27" cy="-21" rx="0" ry="0"/>
+            </g>
+            <g id="edge1" class="edge">
+                <path fill="none" d="M27,-74.8314C27,-54.1685 27,-23.0205 27,-21.0939"/>
+            </g>
+            <g id="node3" class="node">
+                <polygon points="126,-41.6019 72,-41.6019 72,-.3981 126,-.3981 126,-41.6019"/>
+                <text text-anchor="middle" stroke="none" x="99" y="-25.2" 
+                      font-size="14.00">RF
+                </text>
+                <text text-anchor="middle" stroke="none" x="99" y="-8.4" 
+                      font-size="14.00">tuner
+                </text>
+            </g>
+            <g id="edge2" class="edge">
+                <path d="M27.0522,-20C27.0522,-20 61.658,-20 61.658,-20"/>
+                <polygon points="61.658,-23.5001 71.658,-20 61.6579,-16.5001 61.658,-23.5001"/>
+            </g>
+            <g id="node4" class="node diagram__node--selected">
+                <polygon
+                        points="238.7501,-41.6019 160.8499,-41.6019 160.8499,-.3981 238.7501,-.3981 238.7501,-41.6019"/>
+                <text text-anchor="middle" stroke="none" x="199.8" y="-25.2" 
+                      font-size="14.00">A/D
+                </text>
+                <text text-anchor="middle" stroke="none" x="199.8" y="-8.4" 
+                      font-size="14.00">Converter
+                </text>
+            </g>
+            <g id="edge3" class="edge">
+                <path d="M126.0126,-20C126.0126,-20 150.9633,-20 150.9633,-20"/>
+                <polygon fill="#66c2a5" points="150.9633,-23.5001 160.9633,-20 150.9632,-16.5001 150.9633,-23.5001"/>
+            </g>
+            <g id="node5" class="node">
+                <polygon fill="none" points="320.4,-39 266.4,-39 266.4,-3 320.4,-3 320.4,-39"/>
+                <text text-anchor="middle" stroke="none" x="293.4" y="-16.8" 
+                      font-size="14.00">DDC
+                </text>
+            </g>
+            <g id="edge4" class="edge">
+                <path d="M238.6817,-20C238.6817,-20 256.1816,-20 256.1816,-20"/>
+                <polygon points="256.1816,-23.5001 266.1816,-20 256.1816,-16.5001 256.1816,-23.5001"/>
+            </g>
+            <g id="node6" class="node">
+                <text text-anchor="middle" stroke="none" x="358.2" y="-16.8" 
+                      font-size="14.00">PC
+                </text>
+            </g>
+            <g id="edge5" class="edge">
+                <path fill="none" d="M320.5056,-20C320.5056,-20 329.8529,-20 329.8529,-20"/>
+                <polygon points="329.853,-23.5001 339.8529,-20 329.8529,-16.5001 329.853,-23.5001"/>
+            </g>
+        </g>
+    </svg>
+    <h3><a href="https://en.wikipedia.org/wiki/Analog-to-digital_converter">A/D Converter</a></h3>
+    <div class="r-stretch">
+        <p>
+            The ADC samples the IF signal<br/>converting it to a <b>digital signal</b>
+        </p>
+    </div>
+</section>
+
+<section data-auto-animate>
+    <svg style="width: 100%" viewBox="0.00 0.00 384.00 119.00" xmlns="http://www.w3.org/2000/svg" data-id="diagram">
+        <g class="diagram" transform="translate(4 115)">
+            <g id="node1" class="node">
+                <title>ant_head</title>
+                <polygon fill="none" points="27,-75 54,-102 0,-102 27,-75"/>
+            </g>
+            <g id="node2" class="node">
+                <ellipse cx="27" cy="-21" rx="0" ry="0"/>
+            </g>
+            <g id="edge1" class="edge">
+                <path fill="none" d="M27,-74.8314C27,-54.1685 27,-23.0205 27,-21.0939"/>
+            </g>
+            <g id="node3" class="node">
+                <polygon points="126,-41.6019 72,-41.6019 72,-.3981 126,-.3981 126,-41.6019"/>
+                <text text-anchor="middle" stroke="none" x="99" y="-25.2" 
+                      font-size="14.00">RF
+                </text>
+                <text text-anchor="middle" stroke="none" x="99" y="-8.4" 
+                      font-size="14.00">tuner
+                </text>
+            </g>
+            <g id="edge2" class="edge">
+                <path d="M27.0522,-20C27.0522,-20 61.658,-20 61.658,-20"/>
+                <polygon points="61.658,-23.5001 71.658,-20 61.6579,-16.5001 61.658,-23.5001"/>
+            </g>
+            <g id="node4" class="node">
+                <polygon
+                        points="238.7501,-41.6019 160.8499,-41.6019 160.8499,-.3981 238.7501,-.3981 238.7501,-41.6019"/>
+                <text text-anchor="middle" stroke="none" x="199.8" y="-25.2" 
+                      font-size="14.00">A/D
+                </text>
+                <text text-anchor="middle" stroke="none" x="199.8" y="-8.4" 
+                      font-size="14.00">Converter
+                </text>
+            </g>
+            <g id="edge3" class="edge">
+                <path d="M126.0126,-20C126.0126,-20 150.9633,-20 150.9633,-20"/>
+                <polygon fill="#66c2a5" points="150.9633,-23.5001 160.9633,-20 150.9632,-16.5001 150.9633,-23.5001"/>
+            </g>
+            <g id="node5" class="node diagram__node--selected">
+                <polygon fill="none" points="320.4,-39 266.4,-39 266.4,-3 320.4,-3 320.4,-39"/>
+                <text text-anchor="middle" stroke="none" x="293.4" y="-16.8" 
+                      font-size="14.00">DDC
+                </text>
+            </g>
+            <g id="edge4" class="edge">
+                <path d="M238.6817,-20C238.6817,-20 256.1816,-20 256.1816,-20"/>
+                <polygon points="256.1816,-23.5001 266.1816,-20 256.1816,-16.5001 256.1816,-23.5001"/>
+            </g>
+            <g id="node6" class="node">
+                <text text-anchor="middle" stroke="none" x="358.2" y="-16.8" 
+                      font-size="14.00">PC
+                </text>
+            </g>
+            <g id="edge5" class="edge">
+                <path fill="none" d="M320.5056,-20C320.5056,-20 329.8529,-20 329.8529,-20"/>
+                <polygon points="329.853,-23.5001 339.8529,-20 329.8529,-16.5001 329.853,-23.5001"/>
+            </g>
+        </g>
+    </svg>
+    <h3><a href="https://en.wikipedia.org/wiki/Digital_down_converter">D<small>igital</small>D<small>own</small>C<small>onverter</small></a></h3>
+    <div class="r-stretch">
+        <blockquote cite="https://en.wikipedia.org/wiki/Digital_down_converter">
+            <p>
+                [...]a digital down-converter (DDC) converts a digitized, band-limited signal to a lower frequency
+                signal at
+                a lower sampling rate in order to simplify the subsequent radio stages.
+            </p>
+            <cite style="font-size: 0.8em;">&mdash; from Wikipedia</cite>
+        </blockquote>
+    </div>
+</section>
+
+<section data-auto-animate>
+    <svg style="width: 100%" viewBox="0.00 0.00 384.00 119.00" xmlns="http://www.w3.org/2000/svg" data-id="diagram">
+        <g class="diagram" transform="translate(4 115)">
+            <g id="node1" class="node">
+                <title>ant_head</title>
+                <polygon fill="none" points="27,-75 54,-102 0,-102 27,-75"/>
+            </g>
+            <g id="node2" class="node">
+                <ellipse cx="27" cy="-21" rx="0" ry="0"/>
+            </g>
+            <g id="edge1" class="edge">
+                <path fill="none" d="M27,-74.8314C27,-54.1685 27,-23.0205 27,-21.0939"/>
+            </g>
+            <g id="node3" class="node">
+                <polygon points="126,-41.6019 72,-41.6019 72,-.3981 126,-.3981 126,-41.6019"/>
+                <text text-anchor="middle" stroke="none" x="99" y="-25.2" 
+                      font-size="14.00">RF
+                </text>
+                <text text-anchor="middle" stroke="none" x="99" y="-8.4" 
+                      font-size="14.00">tuner
+                </text>
+            </g>
+            <g id="edge2" class="edge">
+                <path d="M27.0522,-20C27.0522,-20 61.658,-20 61.658,-20"/>
+                <polygon points="61.658,-23.5001 71.658,-20 61.6579,-16.5001 61.658,-23.5001"/>
+            </g>
+            <g id="node4" class="node">
+                <polygon
+                        points="238.7501,-41.6019 160.8499,-41.6019 160.8499,-.3981 238.7501,-.3981 238.7501,-41.6019"/>
+                <text text-anchor="middle" stroke="none" x="199.8" y="-25.2" 
+                      font-size="14.00">A/D
+                </text>
+                <text text-anchor="middle" stroke="none" x="199.8" y="-8.4" 
+                      font-size="14.00">Converter
+                </text>
+            </g>
+            <g id="edge3" class="edge">
+                <path d="M126.0126,-20C126.0126,-20 150.9633,-20 150.9633,-20"/>
+                <polygon fill="#66c2a5" points="150.9633,-23.5001 160.9633,-20 150.9632,-16.5001 150.9633,-23.5001"/>
+            </g>
+            <g id="node5" class="node diagram__node--selected">
+                <polygon fill="none" points="320.4,-39 266.4,-39 266.4,-3 320.4,-3 320.4,-39"/>
+                <text text-anchor="middle" stroke="none" x="293.4" y="-16.8" 
+                      font-size="14.00">DDC
+                </text>
+            </g>
+            <g id="edge4" class="edge">
+                <path d="M238.6817,-20C238.6817,-20 256.1816,-20 256.1816,-20"/>
+                <polygon points="256.1816,-23.5001 266.1816,-20 256.1816,-16.5001 256.1816,-23.5001"/>
+            </g>
+            <g id="node6" class="node">
+                <text text-anchor="middle" stroke="none" x="358.2" y="-16.8" 
+                      font-size="14.00">PC
+                </text>
+            </g>
+            <g id="edge5" class="edge">
+                <path fill="none" d="M320.5056,-20C320.5056,-20 329.8529,-20 329.8529,-20"/>
+                <polygon points="329.853,-23.5001 339.8529,-20 329.8529,-16.5001 329.853,-23.5001"/>
+            </g>
+        </g>
+    </svg>
+    <h3><a href="https://en.wikipedia.org/wiki/Digital_down_converter">D<small>igital</small>D<small>own</small>C<small>onverter</small></a></h3>
+    <div class="r-stretch">
+        <p>Exploiting a <b>digital mixer</b> and a <b>digital oscillator</b><br/>the DDC <b>shifts</b> the sampled signal to <b>lower frequencies</b>...</p>
+    </div>
+</section>
+<section data-auto-animate>
+    <svg style="width: 100%" viewBox="0.00 0.00 384.00 119.00" xmlns="http://www.w3.org/2000/svg" data-id="diagram">
+        <g class="diagram" transform="translate(4 115)">
+            <g id="node1" class="node">
+                <title>ant_head</title>
+                <polygon fill="none" points="27,-75 54,-102 0,-102 27,-75"/>
+            </g>
+            <g id="node2" class="node">
+                <ellipse cx="27" cy="-21" rx="0" ry="0"/>
+            </g>
+            <g id="edge1" class="edge">
+                <path fill="none" d="M27,-74.8314C27,-54.1685 27,-23.0205 27,-21.0939"/>
+            </g>
+            <g id="node3" class="node">
+                <polygon points="126,-41.6019 72,-41.6019 72,-.3981 126,-.3981 126,-41.6019"/>
+                <text text-anchor="middle" stroke="none" x="99" y="-25.2"
+                      font-size="14.00">RF
+                </text>
+                <text text-anchor="middle" stroke="none" x="99" y="-8.4"
+                      font-size="14.00">tuner
+                </text>
+            </g>
+            <g id="edge2" class="edge">
+                <path d="M27.0522,-20C27.0522,-20 61.658,-20 61.658,-20"/>
+                <polygon points="61.658,-23.5001 71.658,-20 61.6579,-16.5001 61.658,-23.5001"/>
+            </g>
+            <g id="node4" class="node">
+                <polygon
+                        points="238.7501,-41.6019 160.8499,-41.6019 160.8499,-.3981 238.7501,-.3981 238.7501,-41.6019"/>
+                <text text-anchor="middle" stroke="none" x="199.8" y="-25.2"
+                      font-size="14.00">A/D
+                </text>
+                <text text-anchor="middle" stroke="none" x="199.8" y="-8.4"
+                      font-size="14.00">Converter
+                </text>
+            </g>
+            <g id="edge3" class="edge">
+                <path d="M126.0126,-20C126.0126,-20 150.9633,-20 150.9633,-20"/>
+                <polygon fill="#66c2a5" points="150.9633,-23.5001 160.9633,-20 150.9632,-16.5001 150.9633,-23.5001"/>
+            </g>
+            <g id="node5" class="node diagram__node--selected">
+                <polygon fill="none" points="320.4,-39 266.4,-39 266.4,-3 320.4,-3 320.4,-39"/>
+                <text text-anchor="middle" stroke="none" x="293.4" y="-16.8"
+                      font-size="14.00">DDC
+                </text>
+            </g>
+            <g id="edge4" class="edge">
+                <path d="M238.6817,-20C238.6817,-20 256.1816,-20 256.1816,-20"/>
+                <polygon points="256.1816,-23.5001 266.1816,-20 256.1816,-16.5001 256.1816,-23.5001"/>
+            </g>
+            <g id="node6" class="node">
+                <text text-anchor="middle" stroke="none" x="358.2" y="-16.8"
+                      font-size="14.00">PC
+                </text>
+            </g>
+            <g id="edge5" class="edge">
+                <path fill="none" d="M320.5056,-20C320.5056,-20 329.8529,-20 329.8529,-20"/>
+                <polygon points="329.853,-23.5001 339.8529,-20 329.8529,-16.5001 329.853,-23.5001"/>
+            </g>
+        </g>
+    </svg>
+    <h3><a href="https://en.wikipedia.org/wiki/Digital_down_converter">D<small>igital</small>D<small>own</small>C<small>onverter</small></a></h3>
+    <div class="r-stretch">
+        <p>...a <a href="https://en.wikipedia.org/wiki/Low-pass_filter">digital low-pass filter</a> removes<br/>the useless frequencies<br/><span class="fragment">and a <a href="https://en.wikipedia.org/wiki/Downsampling_(signal_processing)">downsampler</a> reduces<br/>the amount of samples per second</span></p>
+    </div>
+</section>
+
+<section data-auto-animate>
+    <svg style="width: 100%" viewBox="0.00 0.00 384.00 119.00" xmlns="http://www.w3.org/2000/svg" data-id="diagram">
+        <g class="diagram" transform="translate(4 115)">
+            <g id="node1" class="node">
+                <title>ant_head</title>
+                <polygon fill="none" points="27,-75 54,-102 0,-102 27,-75"/>
+            </g>
+            <g id="node2" class="node">
+                <ellipse cx="27" cy="-21" rx="0" ry="0"/>
+            </g>
+            <g id="edge1" class="edge">
+                <path fill="none" d="M27,-74.8314C27,-54.1685 27,-23.0205 27,-21.0939"/>
+            </g>
+            <g id="node3" class="node">
+                <polygon points="126,-41.6019 72,-41.6019 72,-.3981 126,-.3981 126,-41.6019"/>
+                <text text-anchor="middle" stroke="none" x="99" y="-25.2" 
+                      font-size="14.00">RF
+                </text>
+                <text text-anchor="middle" stroke="none" x="99" y="-8.4" 
+                      font-size="14.00">tuner
+                </text>
+            </g>
+            <g id="edge2" class="edge">
+                <path d="M27.0522,-20C27.0522,-20 61.658,-20 61.658,-20"/>
+                <polygon points="61.658,-23.5001 71.658,-20 61.6579,-16.5001 61.658,-23.5001"/>
+            </g>
+            <g id="node4" class="node">
+                <polygon
+                        points="238.7501,-41.6019 160.8499,-41.6019 160.8499,-.3981 238.7501,-.3981 238.7501,-41.6019"/>
+                <text text-anchor="middle" stroke="none" x="199.8" y="-25.2" 
+                      font-size="14.00">A/D
+                </text>
+                <text text-anchor="middle" stroke="none" x="199.8" y="-8.4" 
+                      font-size="14.00">Converter
+                </text>
+            </g>
+            <g id="edge3" class="edge">
+                <path d="M126.0126,-20C126.0126,-20 150.9633,-20 150.9633,-20"/>
+                <polygon fill="#66c2a5" points="150.9633,-23.5001 160.9633,-20 150.9632,-16.5001 150.9633,-23.5001"/>
+            </g>
+            <g id="node5" class="node">
+                <polygon fill="none" points="320.4,-39 266.4,-39 266.4,-3 320.4,-3 320.4,-39"/>
+                <text text-anchor="middle" stroke="none" x="293.4" y="-16.8" 
+                      font-size="14.00">DDC
+                </text>
+            </g>
+            <g id="edge4" class="edge">
+                <path d="M238.6817,-20C238.6817,-20 256.1816,-20 256.1816,-20"/>
+                <polygon points="256.1816,-23.5001 266.1816,-20 256.1816,-16.5001 256.1816,-23.5001"/>
+            </g>
+            <g id="node6" class="node diagram__node--selected">
+                <text text-anchor="middle" stroke="none" x="358.2" y="-16.8" 
+                      font-size="14.00">PC
+                </text>
+            </g>
+            <g id="edge5" class="edge">
+                <path fill="none" d="M320.5056,-20C320.5056,-20 329.8529,-20 329.8529,-20"/>
+                <polygon points="329.853,-23.5001 339.8529,-20 329.8529,-16.5001 329.853,-23.5001"/>
+            </g>
+        </g>
+    </svg>
+    <div class="r-stretch">
+        <p>The <b>samples</b> are sent in real time to a computer<br/>through a hardware interface (e.g. USB)</p>
+        <p class="fragment">
+            Signal <a href="https://en.wikipedia.org/wiki/Demodulation">demodulation</a> and <a href="https://en.wikipedia.org/wiki/Code">decoding</a> are demanded<br/>to software running on the <b>computer</b>
+        </p>
+    </div>
+</section>
